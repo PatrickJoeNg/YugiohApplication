@@ -13,13 +13,12 @@ namespace YugiohApplication
         public string DeckName;
 
         // Initialize for both player life points
-        public int PlayerOneLifePts = 8000;
-        public int PlayerTwoLifePts = 8000;
-
+        public int PlayerLifePts = 8000;
+        
         // Base params for adding a certain amount
         //of Life pts
-        public int AddThousand = 1000;
-        public int PayEight = 800;
+        public int AmtThousand = 1000;
+        public int AmtEight = 800;
 
         //param for turn counter based
         // on cards that rely on number of turns
@@ -29,10 +28,19 @@ namespace YugiohApplication
         {
             Console.WriteLine("Name: " + Name);
             Console.WriteLine("Deck: " + DeckName);
+            Console.WriteLine(PlayerLifePts);
         }
         public void AddThousandLPs()
         {
-            PlayerOneLifePts += AddThousand;
+            PlayerLifePts += AmtThousand;
+        }
+        public void SubThousandLPs()
+        {
+            PlayerLifePts -= AmtThousand;
+        }
+        public void AddCustomAmount(int value)
+        {
+            PlayerLifePts += value;
         }
     }
 }

@@ -29,6 +29,14 @@ namespace YugiohApplication
             Console.WriteLine("Name: " + Name);
             Console.WriteLine("Deck: " + DeckName);
             Console.WriteLine(PlayerLifePts);
+            if (TurnCounter > 0)
+            {
+                Console.Write("Turn Counter: " + TurnCounter);
+            }
+            else
+            {
+                return;
+            }
         }
         public void AddThousandLPs()
         {
@@ -41,6 +49,22 @@ namespace YugiohApplication
         public void AddCustomAmount(int value)
         {
             PlayerLifePts += value;
+        }
+        public void SubCustomAmount(int value)
+        {
+            PlayerLifePts -= value;
+        }
+        public void SubEight()
+        {
+            PlayerLifePts -= AmtEight;
+        }
+        public void AddToCounter(int value)
+        {
+            TurnCounter += value;
+        }
+        public void SubToCounter(int value)
+        {
+            TurnCounter -= value;
         }
     }
 }

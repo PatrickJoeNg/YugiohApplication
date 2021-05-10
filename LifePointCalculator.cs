@@ -17,8 +17,8 @@ namespace YugiohApplication
         
         // Base params for adding a certain amount
         //of Life pts
-        public int AmtThousand = 1000;
-        public int AmtEight = 800;
+        const int AmtThousand = 1000;
+        const int AmtEight = 800;
 
         //param for turn counter based
         // on cards that rely on number of turns

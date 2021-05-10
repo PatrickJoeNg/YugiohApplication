@@ -22,7 +22,7 @@ namespace YugiohApplication
 
             while (true)
             {
-                
+
                 Console.WriteLine("----Current Life Point State----");
 
                 Console.WriteLine("|Player 1|");
@@ -49,13 +49,13 @@ namespace YugiohApplication
                         Console.WriteLine("Choose your option");
 
                         Console.WriteLine("1 to add custom amount, 2 to add 1000");
-                        userInput = Console.ReadLine();
-                        if (int.TryParse(userInput, out value))
+                        string choice = Console.ReadLine();
+                        if (int.TryParse(choice, out int choiceVal))
                         {
 
                             // Adding Custom amount //
                             //////////////////////////
-                            if (value == 1)
+                            if (choiceVal == 1)
                             {
                                 // Choose player to add to //
                                 /////////////////////////////
@@ -89,19 +89,15 @@ namespace YugiohApplication
                                         }
                                     }
                                 }
-                                else
-                                {
-                                    Console.WriteLine("Input either 1 or 2");
-                                }
                             }
-
                             /////////////////////
                             // Adding set 1000 //
                             /////////////////////
-                            if (value == 2)
+                            if (choiceVal == 2)
                             {
                                 Console.WriteLine("Whose Life Points? (1 for player1, 2 for player 2)");
                                 string playerInput = Console.ReadLine();
+
                                 if (int.TryParse(playerInput, out int playerNum))
                                 {
                                     if (playerNum == 1)
@@ -139,7 +135,7 @@ namespace YugiohApplication
                                 Console.WriteLine("Which player? (1 for player1 -- 2 for player2)");
                                 string playerInput = Console.ReadLine();
 
-                                if (int.TryParse(playerInput,out int playerNum))
+                                if (int.TryParse(playerInput, out int playerNum))
                                 {
                                     if (playerNum == 1)
                                     {
@@ -151,7 +147,7 @@ namespace YugiohApplication
                                         Console.WriteLine("Taking 1000 LPs");
                                         player2.SubThousandLPs();
                                     }
-                                }                              
+                                }
                             }
                             // Taking 800 points
                             if (value == 2)
@@ -226,7 +222,7 @@ namespace YugiohApplication
                     return;
                 }
             }
-           
+
         }
     }
 }

@@ -17,34 +17,26 @@ namespace YugiohApplication
         
         // Base params for adding a certain amount
         //of Life pts
-        const int AmtThousand = 1000;
-        const int AmtEight = 800;
+        const int amtThousand = 1000;
+        const int amtEight = 800;
 
-        //param for turn counter based
-        // on cards that rely on number of turns
-        public int TurnCounter = 0;
+        static Random random = new Random();
+
+        private int diceRoll = random.Next(1, 7);
 
         public void DisplayPlayerInfo()
         {
             Console.WriteLine("Name: " + Name);
             Console.WriteLine("Deck: " + DeckName);
             Console.WriteLine(PlayerLifePts);
-            if (TurnCounter > 0)
-            {
-                Console.Write("Turn Counter: " + TurnCounter);
-            }
-            else
-            {
-                return;
-            }
         }
         public void AddThousandLPs()
         {
-            PlayerLifePts += AmtThousand;
+            PlayerLifePts += amtThousand;
         }
         public void SubThousandLPs()
         {
-            PlayerLifePts -= AmtThousand;
+            PlayerLifePts -= amtThousand;
         }
         public void AddCustomAmount(int value)
         {
@@ -56,15 +48,13 @@ namespace YugiohApplication
         }
         public void SubEight()
         {
-            PlayerLifePts -= AmtEight;
+            PlayerLifePts -= amtEight;
         }
-        public void AddToCounter(int value)
+        public int GetDiceRoll()
         {
-            TurnCounter += value;
+            return diceRoll;
         }
-        public void SubToCounter(int value)
-        {
-            TurnCounter -= value;
-        }
+        
+
     }
 }

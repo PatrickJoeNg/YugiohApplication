@@ -6,24 +6,28 @@ namespace YugiohApplication
     {
         static void Main(string[] args)
         {
+            // create two player objects
+
             LifePointCalculator player1 = new LifePointCalculator()
             {
-                Name = "Pat",
-                DeckName = "Zefra"
+                Name = "",
+                DeckName = ""
             };
             LifePointCalculator player2 = new LifePointCalculator()
             {
-                Name = "Brian",
-                DeckName = "ABC"
+                Name = "",
+                DeckName = ""
             };
 
-            Console.WriteLine("Welcome to Duel Interface!");
+            InitGame(player1, player2);
 
+            // start program
+            Console.WriteLine("\nWelcome to Duel Interface!");
 
             while (true)
             {
 
-                Console.WriteLine("----Current Life Point State----");
+                Console.WriteLine("----Current Life Point State----\n");
 
                 Console.WriteLine("|Player 1|");
                 player1.DisplayPlayerInfo();
@@ -33,7 +37,7 @@ namespace YugiohApplication
 
 
                 Console.WriteLine("Choose your option.\n");
-                Console.WriteLine("1 to Add Life Points, 2 to Subtract Life Points");
+                Console.WriteLine("1 to Add Life Points, 2 to Subtract Life Points, 3 for Dice Roll");
                 Console.WriteLine("Q to exit");
 
                 string userInput = Console.ReadLine();
@@ -46,7 +50,7 @@ namespace YugiohApplication
                     ////////////////////////
                     if (value == 1)
                     {
-                        Console.WriteLine("Choose your option");
+                        Console.WriteLine("\nChoose your option");
 
                         Console.WriteLine("1 to add custom amount, 2 to add 1000");
                         string choice = Console.ReadLine();
@@ -211,6 +215,33 @@ namespace YugiohApplication
                             }
                         }
                     }
+
+                    //////////////////
+                    /// Dice Roll ////
+                    if (value ==3 )
+                    {
+                        Console.WriteLine("Who is rolling dice? (1 for player1, 2 for player2)");
+                        string choice = Console.ReadLine();
+                        if (int.TryParse(choice, out int choiceVal))
+                        {
+                            if (choiceVal == 1 )
+                            {
+                                Console.WriteLine($"{player1.Name} is going for a dice roll!");
+                                Console.WriteLine($"\nDice roll is {player1.GetDiceRoll()} ");
+                                Console.WriteLine("Press any key to continue...");
+                                Console.ReadLine();
+                            }
+                            if (choiceVal == 2)
+                            {
+                                Console.WriteLine($"{player2.Name} is going for a dice roll!");
+                                Console.WriteLine($"\nDice roll is {player2.GetDiceRoll()} ");
+                                Console.WriteLine("Press any key to continue...");
+                                Console.ReadLine();
+                            }
+                        }
+                        
+                    }
+
                 }
 
                 // Quit Functionality //
@@ -222,7 +253,36 @@ namespace YugiohApplication
                     return;
                 }
             }
-
         }
+
+        private static void InitGame(LifePointCalculator player1, LifePointCalculator player2)
+        {
+            // param for initalization
+            bool init = true;
+
+            //loop create player details
+            while (init)
+            {
+                //player 1 init
+                Console.WriteLine("Please input player 1 name:");
+                string playerOneName = Console.ReadLine();
+                player1.Name = playerOneName;
+                Console.WriteLine("\nPlease input player1's deck name:");
+                string pOneDeckName = Console.ReadLine();
+                player1.DeckName = pOneDeckName;
+
+
+                //player 2 init
+                Console.WriteLine("\nPlease input player 2 name:");
+                string playerTwoName = Console.ReadLine();
+                player2.Name = playerTwoName;
+                Console.WriteLine("\nPlease input player2's deck name:");
+                string pTwoDeckName = Console.ReadLine();
+                player2.DeckName = pTwoDeckName;
+
+                init = false;
+            }
+        }
+
     }
 }
